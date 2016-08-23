@@ -1,7 +1,7 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
-\documentclass{vgtc}                          % final (conference style)
-%\documentclass[review]{vgtc}                 % review
+%\documentclass{vgtc}                          % final (conference style)
+\documentclass[review]{vgtc}                 % review
 %\documentclass[widereview]{vgtc}             % wide-spaced review
 %\documentclass[preprint]{vgtc}               % preprint
 %\documentclass[electronic]{vgtc}             % electronic version
@@ -75,11 +75,11 @@
 %%     \parbox{1.4in}{\scriptsize \centering Martha Stewart Enterprises \\ Microsoft Research}}
 \author{Jie Jiang \thanks{e-mail: jjiang24@uic.edu}\\ %
         \scriptsize University of Illinois at Chicago %
-\and Thomas Fogal\thanks{e-mail:tfogal@nvidia.com}\\ %
+\and Thomas Fogal\thanks{e-mail: tfogal@nvidia.com}\\ %
      \scriptsize NVIDIA %
-\and Cliff Woolley\thanks{e-mail:jwoolley@nvidia.com}\\ %
+\and Cliff Woolley\thanks{e-mail: jwoolley@nvidia.com}\\ %
      \scriptsize NVIDIA %
-\and Peter Messmer\thanks{e-mail:pmessmer@nvidia.com}\\ %
+\and Peter Messmer\thanks{e-mail: pmessmer@nvidia.com}\\ %
      \scriptsize NVIDIA} %
 
 
@@ -92,7 +92,7 @@
 
 %% Abstract section.
 \abstract{
-NvPipe is a lightweight image compression library that utilizes H.264 standard and NVIDIA hardware accelerated API. Our benchmark results reveal that the compression and decompression time for 1080P resolution image is around 5 ms while the compression ratio could be around 0.7\%. We integrated NvPipe with ParaView's distributed rendering system. NvPipe outperforms ParaView's built-in compressors compression ratio by 30 times while staying competent in efficiency. This high bandwidth saving indicates great potential in remote visualization system with limited bandwidth. } % end of abstract
+Hardware video encoding can lower the perceived latency for remote visualization. NvPipe is a lightweight library that simplifies the use of NVIDIA's video compression hardware. We achieve overall latencies below 15ms with compression ratios of approximately 0.7\%. To verify its applicability in real world scenarios, we integrated NvPipe into ParaView. NvPipe offloads the encoding within ParaView to the GPU and compresses images 30 times better as well. } % end of abstract
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
@@ -128,22 +128,22 @@ H.264 is a block-oriented motion-compensation-based video compression standard \
 
 \section{Implementation}
 
-NvPipe is built on top of FFmpeg to provide compatibility across systems with or without hardware accelerated H264 codec. Although NvPipe accepts images with format RGB/RGBA/YUV, it will convert the image into NV12 to before passing it to FFmpeg/NVENC. As is the decompressed image.
+NvPipe is built on top of FFmpeg to provide compatibility across systems with or without hardware accelerated H264 compression. Although NvPipe accepts images with format RGB/RGBA/YUV, it will convert the image into NV12 to before passing it to FFmpeg/NVENC. As is the decompressed image.
 
 \subsection{Design}
 
-NvPipe could use both hardware accelerated NVIDIA codec and libx264 codec. It expects minimum knowledge about video encoding and requires little effort to be integrated into existing systems. The library simplifies exposed interfaces by providing generic default configuration. For example the default group of pictures (GOP) size is 60 and I:P frame ratio is 1:59.
+NvPipe could use both hardware accelerated NVIDIA codec and libx264 codec. Using widely applicable default values requires little effort to integrate into existing systems. The library simplifies exposed interfaces by providing generic default configuration. For example the default group of pictures (GOP) size is 60 and I:P frame ratio is 1:59.
 
 Compression and decompression with NvPipe is implemented in a synchronous manner without frame latency. Each input frame/packet will return an output packet/frame. NvPipe handles only image compression/decompression. It leaves memory allocation and streaming to user for ease of integration.
 
 \subsection{Performance}
 
-The performance of the compression library is measure by 3 factors: computational efficiency, compression ratio and image quality preservation.
+The performance of the compression library is measured by 3 factors: computational efficiency, compression ratio and image quality preservation.
 
 \subsubsection{Compression Ratio}
 
 %put the reference here: http://www.adobe.com/content/dam/Adobe/en/devnet/video/articles/h264_primer/h264_primer.pdf
-Average bitrate parameter for encoder determines the bandwidth of encoded data, i.e. compression ratio. A guideline for bitrate setting is through Kush Gauge \cite{iszaidyinvestigation}:
+Compression ratio is determined by the average bitrate parameter of NvPipe. A guideline for bitrate setting is through Kush Gauge \cite{iszaidyinvestigation}:
 
 \begin{equation}
 \label{eq:bitrate}
@@ -161,7 +161,7 @@ Assuming we are given 8bit RGB image. Each pixel contains 3 channels. The compre
 
 \subsubsection{Image Quality}
 
-NvPipe could introduce errors during conversion and compression stage. Format conversion from RGB to YUV applies chroma subsampling which introduces error on sharp edges. And NvPipe H.264 codec is configured as high performance low latency model that is not lossless. \cref{fig:quality} shows that very fine features are decently preserved through NvPipe.
+NvPipe could introduce artifacts during conversion and compression stage. Format conversion from RGB to YUV applies chroma subsampling which introduces artifacts on sharp edges. And NvPipe H.264 compression is configured as high performance low latency mode that is not lossless. \cref{fig:quality} shows that very fine features are decently preserved through NvPipe.
 
 \begin{figure}[h]
   \centering
@@ -173,21 +173,20 @@ NvPipe could introduce errors during conversion and compression stage. Format co
 \section{Results}
 
 %Our experiment setup contains two parts. In part one we benchmark the performance of our library given different resolutions and bitrates. In part two we implement vtkNvpipeCompressor to integrate NvPipe into Paraview. We create a distribute visualization use case and compared the performance of NvPipe with ParaView's native built-in compressor.
-Our experiment runs on a linux machines powered by NVIDIA GeForce GTX 1080 (PASCAL) graphics card.
+Our experiment runs on a Linux machine powered by NVIDIA GeForce GTX 1080 (PASCAL) graphics card.
 
-We first run the benchmark of NvPipe. The second part we integrate NvPipe into ParaView and compare the performance of NvPipe with built-in compressors.
+We first run the benchmark of NvPipe on RGB images. We set up experiment groups using 4 common resolutions. For each one we run 3 cases with low bitrate, medium bitrate and high bitrate settings. The medium setting uses \cref{eq:bitrate} with \(f_m = 1\) to calculate the bitrate. While low and high uses \(f_m\) of 0.5 and 2 respectively. Each case runs 300 cycles of compressing and decompressing of consecutive images generated with moving color pattern.
+
+The second part we integrate NvPipe into ParaView and compare the performance of NvPipe with and without hardware acceleration to built-in compressors utilizing lz4, squirt and Zlib. NvPipe uses high bitrate setting with \(f_m=4\) for best image quality. For configuration of ParaView compressors: Lz4 uses quality level 0. Squirt uses compression level 5. Zlib uses compression level of 9 for slow compression with highest compression ratio, color space reduction level of 5 and alpha channel stripping. Zlib fast uses compression level of 1 for fast compression with lowest compression ratio while other parameters remain the same. The experiments use 300 cycles of 1080P RGBA images of rotating volume data. One case uses fixed small rotation angle of \(1.2\degree\) per frame. And the other uses large rotation angle of \(40\degree\) per frame.
 
 \subsection{NvPipe Benchmark}
 % library benchmark
 
-We have 4 experiment groups using different image resolutions. For each resolution we run 3 cases with different bitrate. The medium bitrate is the bitrate calculated using \cref{eq:bitrate} with \(f_m = 1\). while low bitrate and high bitrate uses \(f_m\) of 0.5 and 2 respectively. Each case runs 300 circles of compressing and decompressing of consecutive images generated from a rotating cube.
-
-Given the total number of million pixels of the image to be \(n_p\) and motion factor used for bitrate calculation to be \(f_m\). Linear regression analysis of compression time \(t_c\) and decompression time generates the following models: \(t_c=2.27n_p+0.16f_b+0.86\) and \(t_d=1.60n_p+0.02f_b+0.89\) with \(R^2_c=99.92\%\) and \(R^2_d=99.97\%\). Performance is linear to total number of pixels in the image with trivial influence from the bitrate multipliccation factor used.
+The benchmark experiment shows linear scalability of NvPipe to image size. Given the total number of million pixels of the image to be \(n_p\) and motion factor used for bitrate calculation to be \(f_m\). Linear regression analysis of compression time \(t_c\) and decompression time \(t_d\) generates the following models: \(t_c=2.27n_p+0.16f_m+0.86\) and \(t_d=1.60n_p+0.02f_m+0.89\) with \(R^2_c=99.92\%\) and \(R^2_d=99.97\%\). Performance is linear to total number of pixels in the image with trivial influence from the bitrate multipliccation factor used.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   discuss it if extra room appears later.
 %
 %Each image compression or decompression call to NvPipe consists of format conversion and encoding or decoding API calls. Computational complexity for both tasks are linear to the totally number of pixels of the input or output image. So we could expect the overall complexity of our compression and decompression call remains linear to the image size.
-
 
 \cref{tab:experiment_setup} lists general bandwidth requirements and performance for common resolution. 
 
@@ -212,7 +211,7 @@ Given the total number of million pixels of the image to be \(n_p\) and motion f
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\columnwidth]{compressRatio.eps}
-  \caption{In-situ compression ratio during 300-frame of 1080P visualization of volume data rotating at \(1.2\degree\) per frame: i. NvPipe compressor has a huge compression ratio advantage of below 1\% versus ParaView compressors staying between 25\% to 90\%. ii. ParaView compressors are highly sensitive to data, notice the symmetric pattern due to the \(360\degree\) rotation, while NvPipe compression ratio stays stable except for the peak due to the key frame every 60 frames. }
+  \caption{Compression ratio during small rotation experiemnt: i. NvPipe compressor has a huge compression ratio advantage of below 1\% versus ParaView compressors staying between 25\% to 90\%. ii. ParaView compressors are highly sensitive to data, notice the symmetric pattern due to the \(360\degree\) rotation, while NvPipe compression ratio stays stable except for the peak due to the key frame every 60 frames. }
   \label{fig:compressRatio}
 \end{figure}
   %ParaView built-in compressors use the primary axis on the left while NvPipe hardware and software compressors use the secondary axis on the right. 
@@ -226,19 +225,25 @@ For more generic case, our experiments runs 5 sets of 300 frames of randomly rot
 The efficiency in \cref{fig:time} shows that although software-based NvPipe suffers from slow compression, the hardware accelerated NvPipe compressor outperforms other tested compressor in both encoding and decoding time.
 
 The compression ratio on the first 2 rows in \cref{tab:latency}. NvPipe has 43 times better compression ratio comparing to fast Zlib, which is the best compressor tested in Paraview.
-For each image, the theoretical aggregated latency is \(T_{latency}=t_c+t_d+t_{network}\), where communication time \(t_{network}=size_{i}/{BW}\). 
+The theoretical aggregated latency could be calculated through \cref{eq:latency}, where communication time \(t_{network}={compressed\, image\, size}/{BW}\). 
+
+\begin{equation}
+\label{eq:latency}
+T_{latency}=t_{compression}+t_{decompression}+t_{network}
+\end{equation}
+
 Assume we have 100mbps available bandwidth, for each compressor image size \(s_i=1920*1080*8*3*{ratio}\) we could calculate the communication time for each compressor. Combining data from \cref{fig:time} we get the overall latency in \cref{tab:latency}.
 
 % discuss encoding/decoding time --> framerate / latency 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{Performance.eps}
-  \caption{ Average compress and decompress time of 1080P image with randomly rotating volume. For NvPipe we stack the time of format conversion and compress/decompress time. NvPipe software approach takes much longer time for image compression. While NvPipe hardware compressor outperforms other compressors.}
+  \caption{ Average compress and decompress time of large rotation experiment. For NvPipe we stack the time of format conversion and compress/decompress time. NvPipe software approach takes much longer time for image compression. While NvPipe hardware compressor outperforms other compressors.}
   \label{fig:time}
 \end{figure}
 
 \begin{table}[htb]
-  \caption{Average compression ratio and theoretical latency of 1080P images with randomly rotating volume data using different compressors. The lower ratio means better compressed. H.264 has much better compression ratio as well as higher computational complexity as can be seen from the encoding time of NvPipe software. For the overall latency NvPipe hardware approach has 4 times speed up comparing to the second fasted compressor LZ4}
+  \caption{Average compression ratio and theoretical latency of large rotation experiment. The lower ratio means better compressed. H.264 has much better compression ratio as well as higher computational complexity as can be seen from the encoding time of NvPipe software. For the overall latency NvPipe hardware approach has 4 times speed up comparing to the second fasted compressor LZ4}
   \label{tab:latency}
   \scriptsize
   \begin{center}

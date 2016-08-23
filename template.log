@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  23 AUG 2016 02:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  23 AUG 2016 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -666,20 +666,17 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 123.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 123.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <9> not available
 (Font)              Font shape `OT1/phv/b/sc' tried instead on input line 123.
 File: quality.eps Graphic file (type eps)
  <quality.eps>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 169.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 169.
+
 [1
 
 
@@ -688,7 +685,7 @@ File: compressRatio.eps Graphic file (type eps)
  <compressRatio.eps>
 File: Performance.eps Graphic file (type eps)
  <Performance.eps>
-Overfull \hbox (15.48576pt too wide) in paragraph at lines 245--253
+Overfull \hbox (15.48576pt too wide) in paragraph at lines 250--258
  [] 
  []
 
@@ -696,12 +693,12 @@ Overfull \hbox (15.48576pt too wide) in paragraph at lines 245--253
 
 ] (./template.aux) ) 
 Here is how much of TeX's memory you used:
- 13389 strings out of 493030
- 280195 string characters out of 6136260
- 308986 words of memory out of 5000000
- 16852 multiletter control sequences out of 15000+600000
- 35315 words of font info for 89 fonts, out of 8000000 for 9000
+ 13362 strings out of 493030
+ 279785 string characters out of 6136260
+ 309011 words of memory out of 5000000
+ 16827 multiletter control sequences out of 15000+600000
+ 27215 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,12n,48p,10359b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,8n,48p,10359b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on template.dvi (3 pages, 16160 bytes).
+Output written on template.dvi (3 pages, 16740 bytes).
