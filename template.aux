@@ -6,32 +6,29 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Compression Ratio}{1}}
 \newlabel{formula:bitrate}{{1}{1}}
 \newlabel{formula:compress_ratio}{{2}{1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Computational Expenses}{1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Image Quality}{1}}
-\newlabel{figure:quality}{{2.2.3}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image quality reservation: images on top are the original while the bottom ones are the recovered. The right column uses the left column image with artificially added white noise.}}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Experiment}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Image Quality}{1}}
+\newlabel{figure:quality}{{2.2.2}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image quality reservation, 1080P image with area of 60x60 pixels zoomed in. Left block is the original while the right block is the recovered from a compression using \(f_m=4\). Although there is errors between two images, we can see features inside image has been well preserved. }}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{1}}
 \citation{ref_1}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational Scalability Experiment measuring encoding and decoding time with RGB images}}{2}}
-\newlabel{table:experiment_setup}{{1}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experiment Setup}{2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}NvPipe Benchmark}{2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}ParaView Integration}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Results}{2}}
-\newlabel{figure:linear}{{3.2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces X-axis is the number of pixels while Y-axis is the processing time in milliseconds}}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Average Compression Ratio}}{2}}
-\newlabel{table:compression_ratio}{{2}{2}}
-\newlabel{figure:compressRatio}{{3.2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Real-time compression ratio during 100-frame visualization of rotating wavelet data at 1080P}}{2}}
-\newlabel{figure:time}{{3.2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average compress and decompress time per frame in milliseconds. Image resolution is 1920x1080. For NvPipe we stack the time for image conversion and encoding/decoding time}}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{2}}
 \bibstyle{abbrv}
 \citation{*}
 \bibdata{template}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}NvPipe Benchmark}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational Scalability Experiment measuring encoding and decoding time with RGB images}}{2}}
+\newlabel{table:experiment_setup}{{1}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Computational Expenses}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ParaView Integration}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Average compression ratio of 1080P images with randomly rotating volume data. The lower ratio means better compressed. }}{2}}
+\newlabel{table:compression_ratio}{{2}{2}}
+\newlabel{figure:compressRatio}{{3.2}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces In-situ compression ratio during 300-frame of 1080P visualization of volume data rotating at \(1.2\degree  \) per frame: i. NvPipe compressor has a huge compression ratio advantage of below 1\% versus ParaView compressors staying between 25\% to 90\%. ii. ParaView compressors are highly sensitive to data, notice the symmetric pattern due to the \(360\degree  \) rotation, while NvPipe compression ratio stays stable except for the peak due to the key frame every 60 frames. }}{2}}
+\newlabel{figure:time}{{3.2}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Average compress and decompress time of 1080P image with randomly rotating volume. For NvPipe we stack the time of format conversion and compress/decompress time. NvPipe software approach takes much longer time for image compression in exchange for superior compression ratio. While NvPipe hardware compressor outperforms other compressors in both perspective 2\hbox {}. }}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{2}}
 \bibcite{ref_3}{1}
 \bibcite{ref_4}{2}
 \bibcite{ref_5}{3}
 \bibcite{ref_1}{4}
 \bibcite{ref_2}{5}
+\bibcite{ref_6}{6}
