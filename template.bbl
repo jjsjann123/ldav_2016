@@ -1,21 +1,38 @@
 \begin{thebibliography}{1}
 
-\bibitem{ref_3}
-{\em ffmpeg}.
-
-\bibitem{ref_4}
-{\em h.264}.
-
-\bibitem{ref_5}
-{\em h.265}.
-
 \bibitem{ref_1}
 {\em nvidia codec}.
 
-\bibitem{ref_2}
-{\em ParaView book}.
+\bibitem{ffmpeg}
+Ffmpeg, 2016.
+\newblock [Online; accessed 22-August-2016].
 
-\bibitem{ref_6}
-{\em ssim}.
+\bibitem{henderson2004paraview}
+A.~Henderson, J.~Ahrens, C.~Law, et~al.
+\newblock {\em The ParaView Guide}.
+\newblock Kitware Clifton Park, NY, 2004.
+
+\bibitem{iszaidyinvestigation}
+I.~Iszaidy, R.~Ahmad, N.~Kahar, M.~Rahman, and S.~N. Yaakob.
+\newblock The investigation of bitrate effects on the video quality of plecord
+  system.
+
+\bibitem{sullivan2012overview}
+G.~J. Sullivan, J.-R. Ohm, W.-J. Han, and T.~Wiegand.
+\newblock Overview of the high efficiency video coding (hevc) standard.
+\newblock {\em IEEE Transactions on circuits and systems for video technology},
+  22(12):1649--1668, 2012.
+
+\bibitem{wang2004image}
+Z.~Wang, A.~C. Bovik, H.~R. Sheikh, and E.~P. Simoncelli.
+\newblock Image quality assessment: from error visibility to structural
+  similarity.
+\newblock {\em IEEE transactions on image processing}, 13(4):600--612, 2004.
+
+\bibitem{wiegand2003overview}
+T.~Wiegand, G.~J. Sullivan, G.~Bjontegaard, and A.~Luthra.
+\newblock Overview of the h. 264/avc video coding standard.
+\newblock {\em IEEE Transactions on circuits and systems for video technology},
+  13(7):560--576, 2003.
 
 \end{thebibliography}

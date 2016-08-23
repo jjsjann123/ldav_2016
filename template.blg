@@ -3,51 +3,49 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: template.aux
 The style file: abbrv.bst
 Database file #1: template.bib
+Warning--to sort, need author or key in ffmpeg
 Warning--to sort, need author, organization, or key in ref_1
-Warning--to sort, need author, organization, or key in ref_2
-Warning--to sort, need author, organization, or key in ref_3
-Warning--to sort, need author, organization, or key in ref_4
-Warning--to sort, need author, organization, or key in ref_5
-Warning--to sort, need author, organization, or key in ref_6
-You've used 6 entries,
+Warning--empty journal in iszaidyinvestigation
+Warning--empty year in iszaidyinvestigation
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            508 strings with 3780 characters,
-and the built_in function-call counts, 830 in all, are:
-= -- 72
-> -- 6
+            531 strings with 4675 characters,
+and the built_in function-call counts, 2161 in all, are:
+= -- 198
+> -- 122
 < -- 0
-+ -- 6
-- -- 0
-* -- 44
-:= -- 99
-add.period$ -- 6
-call.type$ -- 6
-change.case$ -- 12
++ -- 51
+- -- 42
+* -- 170
+:= -- 360
+add.period$ -- 17
+call.type$ -- 7
+change.case$ -- 39
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 48
-empty$ -- 115
-format.name$ -- 0
-if$ -- 193
+cite$ -- 11
+duplicate$ -- 70
+empty$ -- 165
+format.name$ -- 42
+if$ -- 434
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 0
-newline$ -- 21
-num.names$ -- 0
-pop$ -- 30
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 34
+num.names$ -- 10
+pop$ -- 51
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 34
 quote$ -- 0
-skip$ -- 36
+skip$ -- 47
 stack$ -- 0
-substring$ -- 30
+substring$ -- 118
 swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 6
-while$ -- 0
-width$ -- 7
-write$ -- 32
-(There were 6 warnings)
+type$ -- 26
+warning$ -- 4
+while$ -- 16
+width$ -- 8
+write$ -- 65
+(There were 4 warnings)
