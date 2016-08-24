@@ -2,39 +2,22 @@
 \citation{wiegand2003overview}
 \citation{ffmpeg}
 \citation{iszaidyinvestigation}
+\citation{iszaidyinvestigation}
 \citation{wang2004image}
 \citation{wang2004image}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Implementation}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Design}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Performance}{1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Compression Ratio}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Design}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Performance}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Compression Ratio}{1}}
 \newlabel{eq:bitrate}{{1}{1}}
 \newlabel{eq:bitrate@cref}{{[equation][1][]1}{1}}
 \newlabel{eq:compress_ratio}{{2}{1}}
 \newlabel{eq:compress_ratio@cref}{{[equation][2][]2}{1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Image Quality}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 1080P image rendered from randomly rotating volume data and compressed using bitrate with \(f_m=4\). Average stractural similarity (SSIM) between the images are 98\% \cite  {wang2004image}. Looking at a the block of 60x60 pixels. The left block is the original image while the right block is the recovered image, we can see fine features has been well preserved. }}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Image Quality}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 1080P image rendered from randomly rotating volume data and compressed using bitrate calculated with \(f_m=4\). Average stractural similarity (SSIM\nobreakspace  {}\cite  {wang2004image}) between the images are 98\%. Looking at a the block of 60x60 pixels. The right block is the original image and the left block is the recovered image, we can see fine features has been well preserved. }}{1}}
 \newlabel{fig:quality}{{1}{1}}
 \newlabel{fig:quality@cref}{{[figure][1][]1}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}NvPipe Benchmark}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational scalability benchmark measuring average compression and decompression time per frame during 300 frames of RGB images with moving pattern}}{2}}
-\newlabel{tab:experiment_setup}{{1}{2}}
-\newlabel{tab:experiment_setup@cref}{{[table][1][]1}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ParaView Integration}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio during small rotation experiemnt: i. NvPipe compressor has a huge compression ratio advantage of below 1\% versus ParaView compressors staying between 25\% to 90\%. ii. ParaView compressors are highly sensitive to data, notice the symmetric pattern due to the \(360\degree \) rotation, while NvPipe compression ratio stays stable except for the peak due to the key frame every 60 frames. }}{2}}
-\newlabel{fig:compressRatio}{{2}{2}}
-\newlabel{fig:compressRatio@cref}{{[figure][2][]2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Average compress and decompress time of large rotation experiment. For NvPipe we stack the time of format conversion and compress/decompress time. NvPipe software approach takes much longer time for image compression. While NvPipe hardware compressor outperforms other compressors.}}{2}}
-\newlabel{fig:time}{{3}{2}}
-\newlabel{fig:time@cref}{{[figure][3][]3}{2}}
-\newlabel{eq:latency}{{3}{2}}
-\newlabel{eq:latency@cref}{{[equation][3][]3}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Average compression ratio and theoretical latency of large rotation experiment. The lower ratio means better compressed. H.264 has much better compression ratio as well as higher computational complexity as can be seen from the encoding time of NvPipe software. For the overall latency NvPipe hardware approach has 4 times speed up comparing to the second fasted compressor LZ4}}{2}}
-\newlabel{tab:latency}{{2}{2}}
-\newlabel{tab:latency@cref}{{[table][2][]2}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{2}}
 \bibstyle{abbrv}
 \citation{*}
 \bibdata{template}
@@ -45,3 +28,20 @@
 \bibcite{sullivan2012overview}{5}
 \bibcite{wang2004image}{6}
 \bibcite{wiegand2003overview}{7}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}NvPipe Benchmark}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational scalability benchmark measuring average compression and decompression time per frame during 300 frames of RGB images with moving pattern}}{2}}
+\newlabel{tab:experiment_setup}{{1}{2}}
+\newlabel{tab:experiment_setup@cref}{{[table][1][]1}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ParaView Integration}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio during high coherency experiemnt: i. NvPipe compressor has a huge compression ratio advantage of above 128:1 versus ParaView's' compressors staying between 1.3:1 to 3.4:1.}}{2}}
+\newlabel{fig:compressRatio}{{2}{2}}
+\newlabel{fig:compressRatio@cref}{{[figure][2][]2}{2}}
+\newlabel{eq:latency}{{3}{2}}
+\newlabel{eq:latency@cref}{{[equation][3][]3}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Average compress and decompress time of large rotation experiment. For NvPipe we stack the time of format conversion and compress/decompress time. NvPipe software approach takes much longer time for image compression. While NvPipe hardware compressor outperforms other compressors.}}{2}}
+\newlabel{fig:time}{{3}{2}}
+\newlabel{fig:time@cref}{{[figure][3][]3}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Average compression ratio and theoretical latency using 10mbps network of low coherency experiment. The lower ratio means better compressed. H.264 has much better compression ratio as well as higher computational complexity as can be seen from the encoding time of NvPipe software. For the overall latency NvPipe hardware approach has 4 times speed up comparing to the second fasted compressor LZ4}}{2}}
+\newlabel{tab:latency}{{2}{2}}
+\newlabel{tab:latency@cref}{{[table][2][]2}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{2}}
