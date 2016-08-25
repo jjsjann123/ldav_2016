@@ -1,7 +1,9 @@
 \relax 
 \citation{wiegand2003overview}
+\citation{nvcodec}
 \citation{ffmpeg}
-\citation{iszaidyinvestigation}
+\citation{wiegand2003overview}
+\citation{henderson2004paraview}
 \citation{iszaidyinvestigation}
 \citation{wang2004image}
 \citation{wang2004image}
@@ -14,26 +16,26 @@
 \newlabel{eq:compress_ratio}{{2}{1}}
 \newlabel{eq:compress_ratio@cref}{{[equation][2][]2}{1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Image Quality}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 1080P image rendered from randomly rotating volume data and compressed using bitrate calculated with \(f_m=4\). Average stractural similarity (SSIM\nobreakspace  {}\cite  {wang2004image}) between the images are 98\%. Looking at a the block of 60x60 pixels. The right block is the original image and the left block is the recovered image, we can see fine features has been well preserved. }}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 1080p image compressed using bitrate calculated with \(f_m=4\). Average structural similarity (SSIM\nobreakspace  {}\cite  {wang2004image}) between the images is 98\%. Looking at the block of 60x60 pixels. The right block is the original image and the left block is the recovered image, we can see fine features has been well preserved. }}{1}}
 \newlabel{fig:quality}{{1}{1}}
 \newlabel{fig:quality@cref}{{[figure][1][]1}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}NvPipe Benchmark}{1}}
+\citation{sullivan2012overview}
 \bibstyle{abbrv}
-\citation{*}
 \bibdata{template}
-\bibcite{ref_1}{1}
-\bibcite{ffmpeg}{2}
-\bibcite{henderson2004paraview}{3}
-\bibcite{iszaidyinvestigation}{4}
+\bibcite{ffmpeg}{1}
+\bibcite{henderson2004paraview}{2}
+\bibcite{iszaidyinvestigation}{3}
+\bibcite{nvcodec}{4}
 \bibcite{sullivan2012overview}{5}
 \bibcite{wang2004image}{6}
 \bibcite{wiegand2003overview}{7}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}NvPipe Benchmark}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational scalability benchmark measuring average compression and decompression time per frame during 300 frames of RGB images with moving pattern}}{2}}
 \newlabel{tab:experiment_setup}{{1}{2}}
 \newlabel{tab:experiment_setup@cref}{{[table][1][]1}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ParaView Integration}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio during high coherency experiemnt: i. NvPipe compressor has a huge compression ratio advantage of above 128:1 versus ParaView's' compressors staying between 1.3:1 to 3.4:1.}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio during high coherency experiemnt. Both the hardware (NP\_hw) and software (NP\_sw) NvPipe compressors have huge compression ratio advantage with above 128:1 versus ParaView's compressors staying between 1.3:1 to 3.4:1.}}{2}}
 \newlabel{fig:compressRatio}{{2}{2}}
 \newlabel{fig:compressRatio@cref}{{[figure][2][]2}{2}}
 \newlabel{eq:latency}{{3}{2}}

@@ -1,8 +1,5 @@
 \begin{thebibliography}{1}
 
-\bibitem{ref_1}
-{\em nvidia codec}.
-
 \bibitem{ffmpeg}
 Ffmpeg, 2016.
 \newblock [Online; accessed 22-August-2016].
@@ -16,6 +13,10 @@ A.~Henderson, J.~Ahrens, C.~Law, et~al.
 I.~Iszaidy, R.~Ahmad, N.~Kahar, M.~Rahman, and S.~N. Yaakob.
 \newblock The investigation of bitrate effects on the video quality of
   {PLECORD} system.
+
+\bibitem{nvcodec}
+{NVIDIA}.
+\newblock {\em {NVIDIA} Video Codec SDK Application Note}, 2016.
 
 \bibitem{sullivan2012overview}
 G.~J. Sullivan, J.-R. Ohm, W.-J. Han, and T.~Wiegand.

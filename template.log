@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  24 AUG 2016 03:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  24 AUG 2016 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,9 +775,9 @@ LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 175.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 193.
+(Font)              scaled to size 9.0pt on input line 198.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 193.
+(Font)              scaled to size 10.0pt on input line 198.
  [1
 
 
@@ -786,23 +786,23 @@ File: compressRatio.eps Graphic file (type eps)
  <compressRatio.eps>
 File: Performance.eps Graphic file (type eps)
  <Performance.eps>
-Overfull \hbox (9.1925pt too wide) in paragraph at lines 257--265
+Overfull \hbox (9.1925pt too wide) in paragraph at lines 264--272
  [] 
  []
 
 (./template.bbl
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 4.
+(Font)              scaled to size 8.0pt on input line 9.
  [2]) [3
 
 ] (./template.aux) ) 
 Here is how much of TeX's memory you used:
- 14652 strings out of 493030
- 306374 string characters out of 6136260
+ 14647 strings out of 493030
+ 306264 string characters out of 6136260
  320173 words of memory out of 5000000
- 18074 multiletter control sequences out of 15000+600000
+ 18069 multiletter control sequences out of 15000+600000
  38455 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,48p,10359b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,10n,48p,10359b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on template.dvi (3 pages, 17412 bytes).
+Output written on template.dvi (3 pages, 17680 bytes).
