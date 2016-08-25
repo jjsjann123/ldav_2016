@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  24 AUG 2016 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.8.16)  24 AUG 2016 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -194,6 +194,17 @@ Package cleveref Info: always capitalise cross-reference names on input line 74
 93.
 Package cleveref Info: no abbreviation of names on input line 7493.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 143.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
@@ -625,46 +636,46 @@ LaTeX Info: Redefining \oldstylenums on input line 478.
 (./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 121.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 128.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    ... okay on input line 128.
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineT-TLF on
- input line 121.
+ input line 128.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
 File: OT1LinuxLibertineT-TLF.fd 2012/11/26 (autoinst) Font definitions for OT1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 121.
+(Font)              scaled to size 9.0pt on input line 128.
 \symgns@font=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
 (Font)                  TS1/LinuxLibertineT-TLF/m/n --> TS1/LinuxLibertineT-TLF
-/bx/n on input line 121.
-Package gensymb Info: Math companion symbols declared on input line 121.
-LaTeX Info: Redefining \degree on input line 121.
-LaTeX Info: Redefining \celsius on input line 121.
+/bx/n on input line 128.
+Package gensymb Info: Math companion symbols declared on input line 128.
+LaTeX Info: Redefining \degree on input line 128.
+LaTeX Info: Redefining \celsius on input line 128.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 121.
-LaTeX Info: Redefining \ohm on input line 121.
-Package gensymb Info: Using \textohm for \ohm on input line 121.
-Package gensymb Info: Using \textmu for \micro on input line 121.
+erthousand on input line 128.
+LaTeX Info: Redefining \ohm on input line 128.
+Package gensymb Info: Using \textohm for \ohm on input line 128.
+Package gensymb Info: Using \textmu for \micro on input line 128.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -677,107 +688,107 @@ File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
 \c@mv@boldtabular=\count149
 \c__siunitx_mathsf_int=\count150
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 12
-1.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 12
-1.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 12
-1.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 12
-1.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 121.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 128.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 128.
 LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on
- input line 121.
+ input line 128.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
 File: TS1LinuxLibertineT-TLF.fd 2012/11/26 (autoinst) Font definitions for TS1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 121.
+(Font)              scaled to size 9.0pt on input line 128.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 121.
+(Font)              scaled to size 7.0pt on input line 128.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 121.
+(Font)              scaled to size 5.0pt on input line 128.
 \c__siunitx_mathtt_int=\count151
 LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on 
-input line 129.
+input line 136.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
 File: OT1LinuxBiolinumT-TLF.fd 2012/11/26 (autoinst) Font definitions for OT1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 129.
+(Font)              scaled to size 9.0pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 129.
+(Font)              scaled to size 14.4pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/bx/n' in size <14.4> not
  available
 (Font)              Font shape `OT1/LinuxBiolinumT-TLF/b/n' tried instead on in
-put line 129.
+put line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 129.
+(Font)              scaled to size 14.4pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/bx/n' in size <9> not av
 ailable
 (Font)              Font shape `OT1/LinuxBiolinumT-TLF/b/n' tried instead on in
-put line 129.
+put line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 129.
+(Font)              scaled to size 9.0pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/bx/sc' in size <9> not a
 vailable
 (Font)              Font shape `OT1/LinuxBiolinumT-TLF/b/sc' tried instead on i
-nput line 129.
+nput line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/sc' will be
-(Font)              scaled to size 9.0pt on input line 129.
+(Font)              scaled to size 9.0pt on input line 136.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 155.
+(Font)              scaled to size 7.0pt on input line 186.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 155.
+(Font)              scaled to size 5.0pt on input line 186.
 File: quality.eps Graphic file (type eps)
 
 <quality.eps>
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 175.
+(Font)              scaled to size 8.0pt on input line 215.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 175.
+(Font)              scaled to size 8.0pt on input line 215.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 175.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 215.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 175.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 215.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 175.
+(Font)              scaled to size 8.0pt on input line 215.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 175.
+(Font)              scaled to size 6.0pt on input line 215.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 198.
+(Font)              scaled to size 9.0pt on input line 262.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 198.
+(Font)              scaled to size 10.0pt on input line 323.
  [1
 
 
@@ -785,24 +796,18 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
 File: compressRatio.eps Graphic file (type eps)
  <compressRatio.eps>
 File: Performance.eps Graphic file (type eps)
- <Performance.eps>
-Overfull \hbox (9.1925pt too wide) in paragraph at lines 264--272
- [] 
- []
-
-(./template.bbl
+ <Performance.eps> (./template.bbl
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 9.
- [2]) [3
-
-] (./template.aux) ) 
+)
+[2] (./template.aux) ) 
 Here is how much of TeX's memory you used:
- 14647 strings out of 493030
- 306264 string characters out of 6136260
- 320173 words of memory out of 5000000
- 18069 multiletter control sequences out of 15000+600000
+ 14895 strings out of 493030
+ 310285 string characters out of 6136260
+ 320893 words of memory out of 5000000
+ 18309 multiletter control sequences out of 15000+600000
  38455 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,48p,10359b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,10n,48p,10359b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on template.dvi (3 pages, 17680 bytes).
+Output written on template.dvi (2 pages, 17964 bytes).
