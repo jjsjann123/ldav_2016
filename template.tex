@@ -103,9 +103,10 @@ Hardware video encoding can lower the perceived latency for remote
 visualization. We have created a lightweight library that simplifies
 the use of NVIDIA's video compression hardware. We achieve overall
 latencies below 15ms with compression ratios of approximately 140:1. To
-verify its applicability in real world scenarios, we integrated our library
-into ParaView. This offloads the encoding within ParaView to the GPU
-and provides a 42x bandwidth reduction compared to existing image compression.}
+verify its applicability in real world scenarios, we integrated our
+library into ParaView. This offloads the encoding within ParaView to
+the GPU and provides a 42x bandwidth reduction compared to existing
+image compression methods available in the tool.}
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
@@ -143,32 +144,36 @@ differencing approaches can yield considerable data savings.
 H.264 is a block-oriented motion-compensation-based video compression
 standard~\cite{wiegand2003overview}. The standard provides high
 compression ratios but this ability comes at significant computational
-expense.  Modern NVIDIA hardware provides a hardware-accelerate H.264
-encoder~\cite{nvcodec}.  The hardware enables real-time encoding with
-minimal overhead. Support for the encoder has been
+expense.  Modern NVIDIA hardware provides a hardware-accelerated H.264
+encoder~\cite{nvcodec}, enabling real-time encoding with
+minimal overhead. Support for the encoder has already been
 integrated into popular multimedia frameworks~\cite{ffmpeg}.
 
 \section{Design}
 
-Our library can utilize NVIDIA's hardware encoder or the libx264-based
-software encoder. We specifically designed our library to abstract away
-most video compression configuration. A detailed discussion of
-H.264 parameters is covered in~\cite{wiegand2003overview}. We have configured
-the encoder to use settings reasonable for visualization. For example, video
-compression normally has a lag time on the order of tens of frames. We have
-reduced the lag time to a single frame and guaranteed that the encoder produces
-a single buffer for every input image, which matches how tools such as 
-ParaView~\cite{henderson2004paraview} and VisIt use image compressors today.
+Our library can utilize NVIDIA's hardware encoder or a libx264-based
+software encoder. Video encoder configuration is
+complicated~\cite{wiegand2003overview}; we specifically designed our
+library to abstract away most encoder settings using values appropriate
+for visualization, trading raw performance for simplicity and ease of
+use.  For example, video streaming normally has a lag time on the order
+of tens of frames. We have reduced the lag time to a single frame and
+guaranteed that the encoder produces a single buffer for every input
+image, which matches how current tools~\cite{Ayachit:2015:ParaView,
+Childs:2011:VisIt} use image compressors.
 
-Our library handles only image compression and decompression. It leaves the
-network communication to the user for ease of integration.
+Our library handles only image compression and decompression.  The
+encoding side returns only an opaque pointer and a size; client code
+is expected to handle network communication.  This protocol-agnostic
+approach facilitates easy integration of the library into any
+client/server-based visualization application.
 
 %NvPipe is built on top of FFmpeg to provide compatibility across systems with and without H.264 hardware. 
 %Although NvPipe accepts images with format RGB/RGBA/YUV, it will convert the image into NV12 to before passing it to FFmpeg/NVENC. As is the decompressed image.
 
 \subsection{Performance}
 
-We measured three aspects of our compression libraries performance:
+We measured three aspects of our compression library's performance:
 computational efficiency, compression ratio, and image quality.
 
 \subsubsection{Compression Ratio}
@@ -177,7 +182,7 @@ computational efficiency, compression ratio, and image quality.
 
 % is there an actual argument for the bitrate?
 
-Compression ratio is determined by the average bitrate parameter.
+The compression ratio is determined by an `average bitrate' parameter.
 A guideline for bitrate setting is the Kush
 Gauge~\cite{iszaidyinvestigation}:
 
@@ -188,31 +193,31 @@ Gauge~\cite{iszaidyinvestigation}:
 
 Where \(f_m\) is the `motion factor' that defines the estimated motion
 of the video on a scale from 1 to 4, with 1 indicating the least motion
-and 4 the most. The default bitrate used in the library uses 
-\(f_m=4\) and an estimated 24 frames per second.
+and 4 the most. The default bitrate used in our library uses \(f_m=4\)
+and an estimated 30 frames per second.
 
 The compression ratio \(r_c\) for an 8-bit RGB image is calculated
 using~\cref{eq:compress_ratio}.
 
 \begin{multline}
-\label{eq:compress_ratio}
  %\text{Compression\, ratio:} \\
  r_c = \frac{ resolution * \text{framerate} * 3 * 8}{ bitrate} = \frac{3*8}{0.07f_m} = \frac{343}{f_m} : 1
+\label{eq:compress_ratio}
 \end{multline}
 
 \subsubsection{Image Fidelity}
 
-Our library utilizes encoder settings for the lossy variant of H.264. Though
-these settings can introduce artifacts at sharp edges in the image,
-~\cref{fig:quality} demonstrates that these artifacts are minor.
+Our library utilizes encoder settings for the lossy variant of
+H.264. Though these settings can introduce artifacts at sharp edges in
+the image, \cref{fig:quality} demonstrates that these artifacts are minor.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{quality.eps}
-  \caption{1080p image compressed using bitrate calculated with
-  \(f_m=4\). The image on the left is the original and the image on the right
-  is the recovered. Average structural similarity (SSIM~\cite{wang2004image})
-  between the images is 98\%.}
+  \caption{Image quality with high ($f_m=4$, 30 FPS) bitrate.
+  Compression of the original (left) creates only minor errors (right).
+  The strucural similarity~\cite{wang2004image} between the two images is
+  98\%.}
   \label{fig:quality}
 \end{figure}
 
@@ -227,17 +232,17 @@ NVIDIA GeForce GTX 1080 (Pascal) graphics card.
 %Both input and output buffer for compression and decompression are located on host memories. 
 
 Ideally one would source the input images from the already-rendered
-images on the GPU. However, existing remoter visualization systems are
+images on the GPU. However, existing remote visualization systems are
 not architected to easily adhere to this design (compositing often uses
 images in host memory). Therefore we utilize an interface that accepts
 data from host memory instead of GPU memory.
 
 We ran a number of benchmarks to examine the performance and
 compression ratio of our library. We tested a variety of resolutions to
-elucidate the relationship between the codec's performance.  We also
-tried a variety of bitrates but do not highlight the result here
-because the results are what one might expect: lower bitrates compress
-to smaller payloads.
+elucidate the relationship between the codec's performance.  Stream
+size was linearly correlated with the bitrate used and
+low bitrates resulted in perceptible artifacts, so all results appear
+with a `high' bitrate ($f_m=4$, assumed 30 FPS) setting.
 
 %We set up experiment groups using 4 common resolutions. For each
 %one we run 3 cases with low bitrate, medium bitrate and high bitrate
@@ -248,19 +253,20 @@ to smaller payloads.
 %pattern.
 
 Secondly, we integrated our library into ParaView and compared its
-performance with and without hardware acceleration to
-built-in compressors utilizing lz4, squirt and Zlib. Our library used a high
-bitrate setting where \(f_m=4\) for best image quality. The existing
-ParaView compressors were configured for maximum compression as opposed
-to maximum performance, though we found little performance difference
-between the two extremes.  The experiments used 1080p RGBA images (the
-library removes the alpha channel) generated from a rotating volume
-dataset.  We tried both a `high coherency' mode, rotating by
-$1.2\degree{}$ per frame to roughly approximate interactive ParaView
-use, and a `low coherency' mode that utilized a larger $45\degree{}$
+performance with (H.264\_hw) and without (H.264\_sw) hardware acceleration to built-in
+compressors utilizing LZ4, SQUIRT and zlib.  The existing ParaView
+compressors were configured for maximum compression as opposed to
+maximum performance, though we found little performance difference
+between the two extremes.  LZ4 and zlib are lossless; the SQUIRT
+compression level used is lossy.  The experiments used 1080p RGBA
+images (the library removes the alpha channel) generated from a
+rotating volume dataset.  We tried both a `high coherency' mode
+(rotating by
+$1.2\degree{}$ per frame) to roughly approximate interactive ParaView
+use, and a `low coherency' mode (that utilized a larger $45\degree{}$
 rotation between
-images, corresponding to a more extreme \textit{in situ} case.  Results
-are the average from 300 iterations across five runs.
+images) corresponding to a more extreme \textit{in situ} case.  Results
+presented are the averages from 300 iterations across five runs.
 
 %Lz4 uses quality level 0. Squirt
 %uses compression level 5. Zlib uses compression level of 9 for slow
@@ -305,19 +311,19 @@ performance for common resolutions.
 %size.
 
 \begin{table}[h]
-  \caption{Average compression and decompression time per frame
-  using our library.  Performance is essentially linear with
-  respect to the size of the image.}
+  \caption{Compression and decompression time per frame through our
+  library.  Bitrate reported corresponds to a `high' bitrate setting.
+  Performance is linear with respect to the image size.}
   \label{tab:experiment_setup}
   \scriptsize
   \begin{center}
     \begin{tabular}{cccc}
       Resolution & Bitrate(mbps) & Compress(ms) & Decompress(ms)\\
     \hline
-      1024x768 & 1.651 & 2.8057 & 2.1170\\
-      1280x720 & 1.935 & 3.4793 & 2.4304\\
-      1920x1080 & 4.355 & 5.4358 & 4.2876\\
-      4096x2160 & 18.579 & 21.2504 & 15.0976
+      1024x768 & 6.606 & 2.8057 & 2.1170\\
+      1280x720 & 7.741 & 3.4793 & 2.4304\\
+      1920x1080 & 17.418 & 5.4358 & 4.2876\\
+      4096x2160 & 74.318 & 21.2504 & 15.0976
     \end{tabular}
   \end{center}
 \end{table}
@@ -333,13 +339,12 @@ performance for common resolutions.
   %the right.
 
 To ensure our library's API could be readily utilized in visualization
-tools, we integrated it as a compressor for ParaView's client/server
-mode.  The library handles encoding on the server side and returns an
-opaque pointer that ParaView sends over the network to the client.  The
-same data is given to the decompressor, which then produces an RGBA
-image with faux alpha channel of value 1.0.  To keep our results independent of
-comparably transient network performance, we launched the client and the server 
-on the same machine.
+tools, we integrated it as a compression option in ParaView's
+client/server mode.  ParaView already had abstractions for image
+compression; since the library is protocol agnostic, it was easy to
+integrate into ParaView's image streaming framework.  To keep our
+results independent of comparably transient network performance, we
+launched the client and server on the same machine.
 
 %Distributed ParaView server uses NvPipe to compress RGBA image buffer
 %and streams compressed image to display client. Our experiment launches
@@ -350,40 +355,35 @@ on the same machine.
   \centering
   \includegraphics[width=\columnwidth]{compressRatio.eps}
   \caption{Compression ratio for `high coherency' case.
-	H.264 achieves compression ratios above 128:1 whereas ParaView's existing
-	compressors maxed out at 3.4:1 in our experiments.}
+	H.264 achieve compression ratios above 128:1 whereas ParaView's existing
+	compressors maxed out at 4:1 in our experiments.}
 %  a large compression ratio advantage with above 128:1 versus ParaView's
 %  compressors staying between 1.3:1 to 3.4:1.}
   \label{fig:compressRatio}
 \end{figure}
 
-~\cref{fig:compressRatio} shows per-frame compression ratios for
-our `high coherency' configuration.  The occasional dips represent
-when we send a keyframe, currently once every 60 frames.  Even if the
-library were to use a keyframe for every frame, our library achieves
-compression ratios 16x better than existing approaches.
+\cref{fig:compressRatio} shows per-frame compression ratios for our
+`high coherency' configuration.  The occasional dips indicate when we
+sent a keyframe, currently once every 60 frames.  Even if the library
+were to use a keyframe for every frame, compression ratios are 16x
+better than existing approaches.
 
 % discuss the bandwidth reduction ( compare other paraview compressor )
 
-~\cref{fig:time} shows the achievable frames/second for our
-encoder as well as ParaView compressors.  Zlib is not competitive
-for image compression.  While the best performance is achieved when
-our library utilizes a GPU, lz4 and Squirt are competitive.  The
+\cref{fig:time} shows the achievable frames/second for our encoder as
+well as ParaView compressors.  While the best performance is achieved
+when our library utilizes a GPU, LZ4 and SQUIRT are competitive.  The
 software-backed version of our library is slower than existing ParaView
 solutions, so environments without a GPU will need to choose between
-fast compression/decompression or low bandwidth.
+fast encoding (LZ4) or low bandwidth (libx264 through our library).
 
-The average compression ratio \(r_c\) is shown
-in~\cref{tab:latency}.  Our library achieves a 42x better
-compression rate than its closest competitor, Zlib.  The payload size
-is particularly important in visualization because of the synchronous
+The average compression ratio (\(r_c\)) is shown
+in \cref{tab:latency}.  Our library achieves a 42x better compression
+rate than its closest competitor, zlib.  The payload size is
+particularly important in visualization because of the synchronous
 nature of current tools: with only a frame or two of latency, it is
 difficult to fully utilize network bandwidth.
 
-%The theoretical aggregated latency could be calculated
-%through Equation~\cref{eq:latency}, where communication time
-%\(t_{network}=\frac{\text{compressed image size}}{BW}\).
-%
 %\begin{equation}
 %\label{eq:latency}
 %T_{latency}=t_{compression}+t_{decompression}+t_{network}
@@ -399,15 +399,15 @@ difficult to fully utilize network bandwidth.
   \centering
   \includegraphics[width=\columnwidth]{Performance.eps}
   \caption{Frame rate of compression and decompression in our `low
-  coherency' experiments.  Our libary's hardware-based backend achieves
+  coherency' experiments. Hardware-based H.264 backend achieves
   slightly better performance than competors, while delivering far
   smaller payloads.}
   \label{fig:time}
 \end{figure}
 
 \begin{table}[htb]
-  \caption{Compression ratio in `low coherency' experiments. Our library has 42x
-   better space saving than the closest compressor, Zlib.}
+  \caption{Compression ratio in `low coherency' experiments. Our library
+	compresses 42x better than its closest competitor, zlib.}
   \label{tab:latency}
   \scriptsize
   \begin{center}
@@ -438,20 +438,21 @@ artifacts are minor.
 
 % This is Peter's add-on for conclusion.
 
-For future work, we would like to investigate the use of H.264's
-lossles configuration~\cite{sullivan2012overview}.  With ParaView's
-decomposition of `interactive' versus `still' renders, one could
-envision using the lossy system during interaction with lossless
-mode during pauses.  We would also like to investigate adding more
-asynchronicity in the compression process: the synchronous nature of
-visualization systems such as ParaView and VisIt makes it difficult
-to fill a network pipe.  This is exacerbated by the high compression
-ratios that are achieved with H.264.  Furthermore, since the encoding
-hardware is asynchronous with the rest of the GPU, it should be
-possible to completely hide the entire multi-millisecond encoding
-latency.  Finally, as rendering already uses the GPU, we would like to
-source the input images directly from the GPU buffer to avoid copying
-images over PCIe in uncompressed form.
+For future work, we would like to investigate the use of HEVC or
+H.264's
+lossless configuration~\cite{sullivan2012overview}.  ParaView's
+segregation of `interactive' versus `still' renders provides a
+convenient mechanism to switch between a lossy mode for interaction
+and a lossless mode during pauses.  We would also like to investigate
+adding more asynchronicity in the compression process: the synchronous
+nature of visualization systems such as ParaView and VisIt makes it
+difficult to fill a network pipe.  This is exacerbated by the high
+compression ratios that are achieved with H.264.  Furthermore, since
+the encoding hardware is asynchronous with the rest of the GPU, it
+should be possible to completely hide the entire multi-millisecond
+encoding latency.  Finally, as rendering already uses the GPU, we would
+like to source the input images directly from the GPU buffer to avoid
+copying uncompressed images over PCIe.
 
 %In future research it will be intereting to investigate the performance
 %of lossless H.264 configuration and HEVC

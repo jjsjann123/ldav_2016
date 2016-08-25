@@ -3,7 +3,8 @@
 \citation{nvcodec}
 \citation{ffmpeg}
 \citation{wiegand2003overview}
-\citation{henderson2004paraview}
+\citation{Ayachit:2015:ParaView}
+\citation{Childs:2011:VisIt}
 \citation{iszaidyinvestigation}
 \citation{wang2004image}
 \citation{wang2004image}
@@ -16,32 +17,33 @@
 \newlabel{eq:compress_ratio}{{2}{1}}
 \newlabel{eq:compress_ratio@cref}{{[equation][2][]2}{1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Image Fidelity}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 1080p image compressed using bitrate calculated with \(f_m=4\). The image on the left is the original and the image on the right is the recovered. Average structural similarity (SSIM\nobreakspace  {}\cite  {wang2004image}) between the images is 98\%.}}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image quality with high ($f_m=4$, 30 FPS) bitrate. Compression of the original (left) creates only minor errors (right). The strucural similarity\nobreakspace  {}\cite  {wang2004image} between the two images is 98\%.}}{1}}
 \newlabel{fig:quality}{{1}{1}}
 \newlabel{fig:quality@cref}{{[figure][1][]1}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Benchmark}{1}}
 \citation{sullivan2012overview}
 \bibstyle{abbrv}
 \bibdata{template}
 \bibcite{ffmpeg}{1}
-\bibcite{henderson2004paraview}{2}
-\bibcite{iszaidyinvestigation}{3}
-\bibcite{nvcodec}{4}
-\bibcite{sullivan2012overview}{5}
-\bibcite{wang2004image}{6}
-\bibcite{wiegand2003overview}{7}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Average compression and decompression time per frame using our library. Performance is essentially linear with respect to the size of the image.}}{2}}
+\bibcite{Ayachit:2015:ParaView}{2}
+\bibcite{Childs:2011:VisIt}{3}
+\bibcite{iszaidyinvestigation}{4}
+\bibcite{nvcodec}{5}
+\bibcite{sullivan2012overview}{6}
+\bibcite{wang2004image}{7}
+\bibcite{wiegand2003overview}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Benchmark}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Compression and decompression time per frame through our library. Bitrate reported corresponds to a `high' bitrate setting. Performance is linear with respect to the image size.}}{2}}
 \newlabel{tab:experiment_setup}{{1}{2}}
 \newlabel{tab:experiment_setup@cref}{{[table][1][]1}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ParaView Integration}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio for `high coherency' case. H.264 achieves compression ratios above 128:1 whereas ParaView's existing compressors maxed out at 3.4:1 in our experiments.}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Compression ratio for `high coherency' case. H.264 achieve compression ratios above 128:1 whereas ParaView's existing compressors maxed out at 4:1 in our experiments.}}{2}}
 \newlabel{fig:compressRatio}{{2}{2}}
 \newlabel{fig:compressRatio@cref}{{[figure][2][]2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Frame rate of compression and decompression in our `low coherency' experiments. Our libary's hardware-based backend achieves slightly better performance than competors, while delivering far smaller payloads.}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Frame rate of compression and decompression in our `low coherency' experiments. Hardware-based H.264 backend achieves slightly better performance than competors, while delivering far smaller payloads.}}{2}}
 \newlabel{fig:time}{{3}{2}}
 \newlabel{fig:time@cref}{{[figure][3][]3}{2}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Compression ratio in `low coherency' experiments. Our library has 42x better space saving than the closest compressor, Zlib.}}{2}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Compression ratio in `low coherency' experiments. Our library compresses 42x better than its closest competitor, zlib.}}{2}}
 \newlabel{tab:latency}{{2}{2}}
 \newlabel{tab:latency@cref}{{[table][2][]2}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{2}}

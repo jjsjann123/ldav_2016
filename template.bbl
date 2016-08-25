@@ -1,13 +1,19 @@
 \begin{thebibliography}{1}
 
 \bibitem{ffmpeg}
-Ffmpeg, 2016.
+{FFmpeg}, 2016.
 \newblock [Online; accessed 22-August-2016].
 
-\bibitem{henderson2004paraview}
-A.~Henderson, J.~Ahrens, C.~Law, et~al.
-\newblock {\em The ParaView Guide}.
-\newblock Kitware Clifton Park, NY, 2004.
+\bibitem{Ayachit:2015:ParaView}
+U.~Ayachit.
+\newblock {\em The ParaView Guide: A parallel visualization application}.
+\newblock Kitware, 2015.
+
+\bibitem{Childs:2011:VisIt}
+H.~Childs et~al.
+\newblock {VisIt}: An end-user tool for visualizing and analyzing very large
+  data.
+\newblock In {\em Proceedings of SciDAC}, 2011.
 
 \bibitem{iszaidyinvestigation}
 I.~Iszaidy, R.~Ahmad, N.~Kahar, M.~Rahman, and S.~N. Yaakob.
