@@ -1,7 +1,7 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
-%\documentclass{vgtc}                          % final (conference style)
-\documentclass[review]{vgtc}                 % review
+\documentclass{vgtc}                          % final (conference style)
+%\documentclass[review]{vgtc}                 % review
 %\documentclass[widereview]{vgtc}             % wide-spaced review
 %\documentclass[preprint]{vgtc}               % preprint
 %\documentclass[electronic]{vgtc}             % electronic version
@@ -34,7 +34,7 @@
 \usepackage{gensymb}
 \usepackage[detect-all]{siunitx}
 
-\usepackage{libertine} 
+%\usepackage{libertine} 
 \usepackage{siunitx}
 \sisetup{per-mode=symbol,per-symbol = p}
 %\sisetup{detect-all}
@@ -42,6 +42,10 @@
 %% We encourage the use of mathptmx for consistent usage of times font
 %% throughout the proceedings. However, if you encounter conflicts
 %% with other math-related packages, you may want to disable it.
+\usepackage[skip=5pt]{caption}
+\setlength{\textfloatsep}{0.3cm}
+\setlength{\intextsep}{0.2cm}
+\addtolength{\parskip}{-0.4mm}
 
 %% If you are submitting a paper to a conference for review with a double
 %% blind reviewing process, please replace the value ``0'' below with your
@@ -80,14 +84,14 @@
 %%     \scriptsize Grimley Widgets, Inc. %
 %%\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}\\ %
 %%     \parbox{1.4in}{\scriptsize \centering Martha Stewart Enterprises \\ Microsoft Research}}
-\author{Jie Jiang \thanks{e-mail: jjiang24@uic.edu}\\ %
-        \scriptsize University of Illinois at Chicago %
-\and Thomas Fogal\thanks{e-mail: tfogal@nvidia.com}\\ %
-     \scriptsize NVIDIA %
-\and Cliff Woolley\thanks{e-mail: jwoolley@nvidia.com}\\ %
-     \scriptsize NVIDIA %
-\and Peter Messmer\thanks{e-mail: pmessmer@nvidia.com}\\ %
-     \scriptsize NVIDIA} %
+\author{Jie Jiang \thanks{e-mail: jjiang24@uic.edu}\\
+        \scriptsize University of Illinois at Chicago
+\and Thomas Fogal\thanks{e-mail: tfogal@nvidia.com}\\
+     \scriptsize NVIDIA
+\and Cliff Woolley\thanks{e-mail: jwoolley@nvidia.com}\\
+     \scriptsize NVIDIA
+\and Peter Messmer\thanks{e-mail: pmessmer@nvidia.com}\\
+     \scriptsize NVIDIA}
 
 
 %% A teaser figure can be included as follows, but is not recommended since
@@ -102,10 +106,10 @@
 Hardware video encoding can lower the perceived latency for remote
 visualization. We have created a lightweight library that simplifies
 the use of NVIDIA's video compression hardware. We achieve overall
-latencies below 15ms with compression ratios of approximately 140:1. To
+latencies below 15ms with compression ratios of approximately 85.5:1. To
 verify its applicability in real world scenarios, we integrated our
 library into ParaView. This offloads the encoding within ParaView to
-the GPU and provides a 42x bandwidth reduction compared to existing
+the GPU and provides a 25x bandwidth reduction compared to existing
 image compression methods available in the tool.}
 
 %% ACM Computing Classification System (CCS). 
@@ -193,17 +197,16 @@ Gauge~\cite{iszaidyinvestigation}:
 
 Where \(f_m\) is the `motion factor' that defines the estimated motion
 of the video on a scale from 1 to 4, with 1 indicating the least motion
-and 4 the most. The default bitrate used in our library uses \(f_m=4\)
+and 4 the most. The default bitrate in our library uses \(f_m=4\)
 and an estimated 30 frames per second.
 
 The compression ratio \(r_c\) for an 8-bit RGB image is calculated
 using~\cref{eq:compress_ratio}.
 
-\begin{multline}
- %\text{Compression\, ratio:} \\
+\begin{equation}
+ \label{eq:compress_ratio}
  r_c = \frac{ resolution * \text{framerate} * 3 * 8}{ bitrate} = \frac{3*8}{0.07f_m} = \frac{343}{f_m} : 1
-\label{eq:compress_ratio}
-\end{multline}
+\end{equation}
 
 \subsubsection{Image Fidelity}
 
@@ -212,12 +215,13 @@ H.264. Though these settings can introduce artifacts at sharp edges in
 the image, \cref{fig:quality} demonstrates that these artifacts are minor.
 
 \begin{figure}[h]
+  \vspace{2.5mm}
   \centering
   \includegraphics[width=\columnwidth]{quality.eps}
   \caption{Image quality with high ($f_m=4$, 30 FPS) bitrate.
   Compression of the original (left) creates only minor errors (right).
   The strucural similarity~\cite{wang2004image} between the two images is
-  98\%.}
+  99.3\%.}
   \label{fig:quality}
 \end{figure}
 
@@ -311,9 +315,11 @@ performance for common resolutions.
 %size.
 
 \begin{table}[h]
+  \vspace{2.5mm}
   \caption{Compression and decompression time per frame through our
   library.  Bitrate reported corresponds to a `high' bitrate setting.
   Performance is linear with respect to the image size.}
+  \vspace{-4mm}
   \label{tab:experiment_setup}
   \scriptsize
   \begin{center}
@@ -326,6 +332,7 @@ performance for common resolutions.
       4096x2160 & 74.318 & 21.2504 & 15.0976
     \end{tabular}
   \end{center}
+  \vspace{-6mm}
 \end{table}
 
 \subsection{ParaView Integration}
@@ -352,10 +359,11 @@ launched the client and server on the same machine.
 %latency.
 
 \begin{figure}[htb]
+  \vspace{2.5mm}
   \centering
   \includegraphics[width=\columnwidth]{compressRatio.eps}
   \caption{Compression ratio for `high coherency' case.
-	H.264 achieve compression ratios above 128:1 whereas ParaView's existing
+	H.264 achieve compression ratios above 64:1 whereas ParaView's existing
 	compressors maxed out at 4:1 in our experiments.}
 %  a large compression ratio advantage with above 128:1 versus ParaView's
 %  compressors staying between 1.3:1 to 3.4:1.}
@@ -364,9 +372,7 @@ launched the client and server on the same machine.
 
 \cref{fig:compressRatio} shows per-frame compression ratios for our
 `high coherency' configuration.  The occasional dips indicate when we
-sent a keyframe, currently once every 60 frames.  Even if the library
-were to use a keyframe for every frame, compression ratios are 16x
-better than existing approaches.
+sent a keyframe, currently once every 60 frames.
 
 % discuss the bandwidth reduction ( compare other paraview compressor )
 
@@ -378,7 +384,7 @@ solutions, so environments without a GPU will need to choose between
 fast encoding (LZ4) or low bandwidth (libx264 through our library).
 
 The average compression ratio (\(r_c\)) is shown
-in \cref{tab:latency}.  Our library achieves a 42x better compression
+in \cref{tab:latency}.  Our library achieves a 25x better compression
 rate than its closest competitor, zlib.  The payload size is
 particularly important in visualization because of the synchronous
 nature of current tools: with only a frame or two of latency, it is
@@ -406,17 +412,20 @@ difficult to fully utilize network bandwidth.
 \end{figure}
 
 \begin{table}[htb]
+  \vspace{2.5mm}
   \caption{Compression ratio in `low coherency' experiments. Our library
-	compresses 42x better than its closest competitor, zlib.}
+	compresses 25x better than its closest competitor, zlib.}
+  \vspace{-4mm}
   \label{tab:latency}
   \scriptsize
   \begin{center}
     \begin{tabular}{ccccccc}
       & LZ4 & Squirt & Zlib & Zlib\_fast & NP\_hw & NP\_sw \\
     \hline
-      \(r_c\) & 1.29:1 & 1.43:1 & 3.43:1 & 2.78:1 & 144:1 & 152:1 \\
+      \(r_c\) & 1.29:1 & 1.43:1 & 3.43:1 & 2.78:1 & 85:1 & 88:1 \\
     \end{tabular}
   \end{center}
+  \vspace{-6mm}
 \end{table}
 
 
@@ -431,7 +440,7 @@ difficult to fully utilize network bandwidth.
 %\cite{ref_1}.% cite nv codec menu.
 
 Our library is an improvement upon existing visualization systems'
-remote image delivery mechanism.  It saves greater than 42x bandwidth
+remote image delivery mechanism.  It saves greater than 25x bandwidth
 in most cases, with modest improvements to compression/decompression
 time as well.  While we utilize lossy H.264 at present, the induced
 artifacts are minor.
